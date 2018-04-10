@@ -15,9 +15,6 @@ int total_waiting_time;
 void sort_process_by_burst_time(Process p[], int n);
 void calculate_waiting_time(Process p[], int n);
 void print_gantt_chart(Process p[], int n);
-
-
-
 void sort_process_by_burst_time(Process p[], int n)
 {
     int i, j;
@@ -36,14 +33,12 @@ void sort_process_by_burst_time(Process p[], int n)
 {
     int i, j;
     int last = p[n-1].burst_time + ( n== 1 ? 0 : p[n-1].waiting_time);
-    // printing top bar
     printf(" ");
     for(i=0; i<n; i++) {
         for(j=0; j<p[i].burst_time; j++) printf("--");
         printf(" ");
     }
     printf("\n|");
-    // middle position
     for(i=0; i<n; i++) {
         for(j=0; j<p[i].burst_time-1; j++) printf(" ");
         printf("p%d", p[i].pid);
@@ -51,14 +46,11 @@ void sort_process_by_burst_time(Process p[], int n)
         printf("|");
     }
     printf("\n ");
-    // bottom bar
     for(i=0; i<n; i++) {
         for(j=0; j<p[i].burst_time; j++) printf("--");
         printf(" ");
     }
     printf("\n");
-
-    // printing waiting time
     int minus = 0;
     for(i=0; i<n; i++) {
         if(p[i].waiting_time>9) printf(" ");
@@ -136,5 +128,3 @@ int main()
   
   return 0; 
 }
-
-
